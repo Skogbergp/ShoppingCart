@@ -1,113 +1,69 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.Scanner;
 
-/**
- * Simple ShoppingCart implementation that stores item names and their amounts.
- *
- * Contract:
- * - addToCart(key, amount): adds a new item or updates an existing item's amount.
- *   If the item exists, the cart total is adjusted to reflect the new value (old value removed, new value added).
- * - removeFromCart(key): removes the item if present and adjusts the total accordingly.
- * - getAmount(): returns the current total amount in the cart.
- *
- * Error modes:
- * - Passing a null key will throw IllegalArgumentException.
- * - Passing a negative amount to addToCart will throw IllegalArgumentException.
- */
 public class ShoppingCart {
-    // Map interface so implementation can be changed easily in future
-    private Map<String, Double> shoppingCart;
-    private double totalAmount;
+    public static void main(String[] args) {
+        Locale locale;
+        ResourceBundle rb = null;
+        int amountOfItems = 0;
 
-    /**
-     * Create an empty shopping cart.
-     */
-    public ShoppingCart(){
-        shoppingCart = new HashMap<>();
-        totalAmount = 0;
-    }
+        double totalCost = 0.0;
 
-    /**
-     * Increase the cached total amount.
-     * @param a amount to add (assumed non-negative when used internally)
-     */
-    private void addAmount(double a){
-        totalAmount += a;
-    }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Select language:");
+        System.out.println("1. English");
+        System.out.println("2. Finnish");
+        System.out.println("3. Swedish");
+        System.out.println("4. Japanese");
 
-    /**
-     * Decrease the cached total amount.
-     * @param a amount to subtract (assumed non-negative when used internally)
-     */
-    private void subtractAmount(double a){
-        totalAmount -= a;
-    }
+        switch (sc.nextInt()) {
+            case 1:
+                locale =  new Locale("en", "US") ;
+                rb = setBundle(locale);
+                break;
+            case 2:
+                locale =  new Locale("fi", "FI") ;
+                rb = setBundle(locale);
+                break;
+            case 3:
+                locale =  new Locale("sw", "SE") ;
+                rb = setBundle(locale);
+                break;
+            case 4:
+                locale =  new Locale("ja", "JP") ;
+                rb = setBundle(locale);
+                break;
 
-    /**
-     * Return true if the given key exists in the cart.
-     * @param key item key
-     * @return true if present
-     */
-    private Boolean isInCart(String key){
-        return shoppingCart.containsKey(key);
-    }
-
-    /**
-     * Get the current total amount for the cart.
-     * @return total amount (sum of all item amounts)
-     */
-    public Double getAmount(){
-        return totalAmount;
-    }
-
-    /**
-     * Add or update an item in the cart.
-     * If the item already exists, the previous amount is removed from the total and
-     * replaced with the new amount.
-     *
-     * @param key item identifier (must not be null)
-     * @param amount non-negative item amount
-     * @throws IllegalArgumentException if key is null or amount is negative
-     */
-    public void addToCart(String key, double amount){
-        if (key == null) {
-            throw new IllegalArgumentException("key cannot be null");
-        }
-        if (amount < 0) {
-            throw new IllegalArgumentException("amount cannot be negative");
+            default:
+                System.out.println("Invalid input");
         }
 
-        if (shoppingCart.containsKey(key)) {
-            // adjust total: remove old value before adding new one
-            double old = shoppingCart.get(key);
-            subtractAmount(old);
-        }
-        shoppingCart.put(key, amount);
-        addAmount(amount);
-    }
 
-    /**
-     * Remove an item from the cart. If the item is not present, this is a no-op.
-     * @param key item identifier (must not be null)
-     * @throws IllegalArgumentException if key is null
-     */
-    public void removeFromCart(String key){
-        if (key == null) {
-            throw new IllegalArgumentException("key cannot be null");
-        }
-        Double existing = shoppingCart.get(key);
-        if (existing == null) {
-            // nothing to remove
-            return;
-        }
-        subtractAmount(existing);
-        shoppingCart.remove(key);
-    }
+        System.out.println(rb.getString("amountOfItems"));
+        amountOfItems = sc.nextInt();
 
-    /**
-     * Print cart contents to stdout in the format: "key: value" per line.
-     */
-    public void printCart(){
-        shoppingCart.forEach((k,v)->{System.out.println(k+": "+v);});
+        double price = 0;
+        int quantity = 0;
+
+        for(int i = 0; i < amountOfItems; i++) {
+            System.out.println(rb.getString("Price"));
+            price = sc.nextDouble();
+
+
+            System.out.println(rb.getString("quantity"));
+            quantity = sc.nextInt();
+            totalCost += price * quantity;
+        }
+
+        System.out.println(rb.getString("totalCost") + totalCost);
+
+
+
+
     }
+    private static ResourceBundle setBundle(Locale locale){
+        return ResourceBundle.getBundle("MessagesBundle", locale);
+
+    };
 }
