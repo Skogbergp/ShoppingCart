@@ -2,7 +2,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class Main {
+public class ShoppingCart {
     public static void main(String[] args) {
         Locale locale;
         ResourceBundle rb = null;
@@ -40,7 +40,7 @@ public class Main {
         }
 
 
-        System.out.println(rb.getString("amountOfItems"));
+        System.out.println(rb.getString("prompt.Item"));
         amountOfItems = sc.nextInt();
 
         double price = 0;
