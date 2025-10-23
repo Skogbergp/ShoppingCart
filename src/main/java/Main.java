@@ -2,7 +2,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class ShoppingCart {
+public class Main {
     public static void main(String[] args) {
         Locale locale;
         ResourceBundle rb = null;
