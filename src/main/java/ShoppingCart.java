@@ -21,20 +21,20 @@ public class ShoppingCart {
 
         switch (choice) {
             case 1:
-                locale =  new Locale("en", "US") ;
-                rb = ResourceBundle.getBundle("MessagesBundle",locale);
+                locale = new Locale("en", "US");
+                rb = ResourceBundle.getBundle("MessagesBundle", locale);
                 break;
             case 2:
-                locale =  new Locale("fi", "FI") ;
-                rb = ResourceBundle.getBundle("MessagesBundle",locale);
+                locale = new Locale("fi", "FI");
+                rb = ResourceBundle.getBundle("MessagesBundle", locale);
                 break;
             case 3:
-                locale =  new Locale("sv", "SE") ;
-                rb = ResourceBundle.getBundle("MessagesBundle",locale);
+                locale = new Locale("sv", "SE");
+                rb = ResourceBundle.getBundle("MessagesBundle", locale);
                 break;
             case 4:
-                locale =  new Locale("ja", "JP") ;
-                rb = ResourceBundle.getBundle("MessagesBundle",locale);
+                locale = new Locale("ja", "JP");
+                rb = ResourceBundle.getBundle("MessagesBundle", locale);
                 break;
 
             default:
@@ -48,7 +48,7 @@ public class ShoppingCart {
         double price = 0;
         int quantity = 0;
 
-        for(int i = 0; i < amountOfItems; i++) {
+        for (int i = 0; i < amountOfItems; i++) {
             System.out.println(rb.getString("Price"));
             price = sc.nextDouble();
 
@@ -59,8 +59,6 @@ public class ShoppingCart {
         }
 
         System.out.println(rb.getString("totalCost") + totalCost);
-
-
 
 
     }
