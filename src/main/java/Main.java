@@ -61,12 +61,6 @@ public class Main {
 
 
 
-
-
-
-
-
-
     }
     private static ResourceBundle setBundle(Locale locale){
         return ResourceBundle.getBundle("MessagesBundle", locale);
