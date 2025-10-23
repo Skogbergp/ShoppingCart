@@ -29,7 +29,7 @@ public class ShoppingCart {
                 rb = ResourceBundle.getBundle("MessagesBundle",locale);
                 break;
             case 3:
-                locale =  new Locale("sw", "SE") ;
+                locale =  new Locale("sv", "SE") ;
                 rb = ResourceBundle.getBundle("MessagesBundle",locale);
                 break;
             case 4:
