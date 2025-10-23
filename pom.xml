@@ -68,7 +68,7 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>TemperatureConverter</mainClass>
+                        <mainClass>ShoppingCart</mainClass>
                     </manifest>
                 </archive>
             </configuration>
