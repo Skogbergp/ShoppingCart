@@ -29,6 +29,7 @@ public class ShoppingCartTest {
         ResourceBundle rb = ResourceBundle.getBundle("MessagesBundle", localeFinnish);
         assertEquals("Syötä ostettavien tuotteiden määrä:", rb.getString("prompt.Item"));
     }
+    @Test
     void testJapaneseBundle(){
         ResourceBundle rb = ResourceBundle.getBundle("MessagesBundle", localeJapanese);
         assertEquals("購入する商品の数を入力してください:", rb.getString("prompt.Item"));
