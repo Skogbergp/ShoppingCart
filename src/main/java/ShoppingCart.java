@@ -17,7 +17,9 @@ public class ShoppingCart {
         System.out.println("3. Swedish");
         System.out.println("4. Japanese");
 
-        switch (sc.nextInt()) {
+        int choice = sc.nextInt();
+
+        switch (choice) {
             case 1:
                 locale =  new Locale("en", "US") ;
                 rb = ResourceBundle.getBundle("MessagesBundle",locale);
