@@ -20,19 +20,19 @@ public class ShoppingCart {
         switch (sc.nextInt()) {
             case 1:
                 locale =  new Locale("en", "US") ;
-                rb = setBundle(locale);
+                rb = ResourceBundle.getBundle("MessagesBundle",locale);
                 break;
             case 2:
                 locale =  new Locale("fi", "FI") ;
-                rb = setBundle(locale);
+                rb = ResourceBundle.getBundle("MessagesBundle",locale);
                 break;
             case 3:
                 locale =  new Locale("sw", "SE") ;
-                rb = setBundle(locale);
+                rb = ResourceBundle.getBundle("MessagesBundle",locale);
                 break;
             case 4:
                 locale =  new Locale("ja", "JP") ;
-                rb = setBundle(locale);
+                rb = ResourceBundle.getBundle("MessagesBundle",locale);
                 break;
 
             default:
@@ -60,10 +60,6 @@ public class ShoppingCart {
 
 
 
-
-    }
-    private static ResourceBundle setBundle(Locale locale){
-        return ResourceBundle.getBundle("MessagesBundle", locale);
 
     }
 }
